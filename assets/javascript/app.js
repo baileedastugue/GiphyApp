@@ -1,4 +1,5 @@
 var musicTopics = ["Annie Clark", "Billy Joel", "The Strokes", "The Crystals"]
+var $this;
 
 function addButton () {
     for (var i = 0; i < musicTopics.length; i++) {
@@ -19,3 +20,13 @@ $("#add-music").on("click", function(){
     addButton();
 })
 
+function displayGIFS () {
+    
+    var musicInfo = $this.attr("data-name");
+    console.log(musicInfo);
+}
+
+$(document).on("click", ".music-btn", function() {
+    $this = $(this);
+    displayGIFS()
+})
