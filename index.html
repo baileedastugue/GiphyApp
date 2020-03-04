@@ -8,8 +8,8 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
     <link rel="stylesheet" type="text/css" href="assets/CSS/base.css">
+    <link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
     <title>Giphy App</title>
 </head>
 <body>
@@ -25,6 +25,46 @@
             </div>
         </div>
     </nav>
+
+    <div class="container">
+        <div class="row">
+            <div id="topicButtons-container" class="col-12 border">
+                This space will be filled with buttons
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 border" id="gif-container">
+                This space will be filled with gifs
+            </div>
+            <div class="col-lg-4 border" id="addingButtons-container">
+                <form class="form-inline">
+                    <div class="form-group mx-sm-3 mb-2">
+                      <!-- <label for="inputPassword2" class="sr-only">Password</label> -->
+                      <input type="text" class="form-control" id="addButton" placeholder="More topics">
+                    </div><br>
+                    <button type="submit" class="btn btn-primary mb-2">+</button>
+                </form>
+
+                <form class="form-inline">
+                    <div class="form-group mx-sm-3 mb-2">
+                      <!-- <label for="inputPassword2" class="sr-only">Password</label> -->
+                      <input type="text" class="form-control" id="addFavorite" placeholder="Add favorites">
+                    </div><br>
+                    <button type="submit" class="btn btn-primary mb-2">+</button>
+                  </form>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 border" id="favorites-container">
+                This space will be filled with favorite gif topics<br>
+                Includes cards, rating, link to favorites page
+            </div>
+        </div>
+    </div>
 </body>
 <script type="text/javascript" src="assets/javascript/app.js"></script>
 </html>

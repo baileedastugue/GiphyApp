@@ -1,0 +1,9 @@
+* {
+    box-sizing: border-box;
+}
+
+.border {
+    border: 4px solid black;
+    padding: 10px;
+    margin-top: 10px;
+}
