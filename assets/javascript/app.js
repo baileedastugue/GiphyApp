@@ -11,3 +11,11 @@ function addButton () {
 }
 
 addButton();
+
+$("#add-music").on("click", function(){
+    var addition = $("#music-input").val().trim();
+    musicTopics.push(addition);
+    $("#musicButtons-container").empty();
+    addButton();
+})
+
