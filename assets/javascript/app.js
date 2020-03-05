@@ -1,6 +1,6 @@
 $( document ).ready(function() {
 
-var musicTopics = ["Annie Clark", "Billy Joel", "The Strokes", "Talking Heads"]
+var musicTopics = ["St. Vincent", "Billy Joel", "The Strokes", "Talking Heads"]
 var $this;
 
 function addButton () {
@@ -42,10 +42,11 @@ function shuffle(array) {
     return array;
   }
 
-function displayGIFS () {
+function displayMusicGIFS () {
     var musicInfo = $this.attr("data-name");
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        musicInfo + "&api_key=jbVjecxyl97zlwipqSEjHVb4NqK2PG5d";
+    var randomOffset = Math.floor(Math.random() * 100)
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=music&q=" +
+        musicInfo + "&offset=" + randomOffset + "&api_key=jbVjecxyl97zlwipqSEjHVb4NqK2PG5d";
 
     $.ajax({
         url: queryURL,
@@ -54,17 +55,19 @@ function displayGIFS () {
         .then(function(response) {
             var results = response.data;
             var randomArray = [];
+            // var resultsReturned = response;
+            // var totalReturned = (response.pagination.total_count); 
 
-            for (var i = 0; i < 25; i++) {
+            for (var i = 0; i < 10; i++) {
                 randomArray.push(i);
             }
             randomArray = shuffle(randomArray);
-            randomArray = randomArray.splice(0, 10);
+            // randomArray = randomArray.splice(0, 10);
 
             for (var i = 0; i < randomArray.length; i++){
                 var randomNum = randomArray[i];
                 var imgTag = $("<img>");
-                imgTag.attr("src", results[randomNum].images.fixed_width.url);
+                imgTag.attr("src", results[randomNum].images.fixed_height_still.url);
                 $("#gif-container").append(imgTag);
             }
         })
@@ -74,7 +77,7 @@ function displayGIFS () {
 $(document).on("click", ".music-btn", function() {
     $this = $(this);
     $("#gif-container").empty();
-    displayGIFS()
+    displayMusicGIFS()
 })
 
 });
