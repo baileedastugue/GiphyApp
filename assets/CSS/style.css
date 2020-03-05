@@ -13,10 +13,16 @@
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
-    height: 200px;
+    height: 300px;
     /* display: inline; */
 }
 
 button#addMoreGifs {
-    height: 200px;
+    height: 100%;
+    vertical-align: top;
+}
+
+.card {
+    width: fit-content;
+    display: inline-block;
 }

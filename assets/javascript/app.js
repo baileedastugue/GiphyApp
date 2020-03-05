@@ -67,13 +67,18 @@ function displayMusicGIFS () {
 
             for (var i = 0; i < randomArray.length; i++){
                 var randomNum = randomArray[i];
+    
                 var imgTag = $("<img>");
+                imgTag.attr("class", "gif");
                 imgTag.attr("src", results[randomNum].images.fixed_height_still.url);
                 imgTag.attr("data-still", results[randomNum].images.fixed_height_still.url)
                 imgTag.attr("data-animate", results[randomNum].images.fixed_height.url)
                 imgTag.attr("state", "still");
-                imgTag.attr("class", "gif");
-                $("#gif-container").prepend(imgTag);
+
+                var cardTag = $("<div class='card'>").append(imgTag);
+                cardTag = cardTag.append($("<div class='card-body'><p class='card-text'>Hello</p></div>"))
+                $("#gif-container").prepend(cardTag);
+                // console.log(cardTag);
             }
         })
 
