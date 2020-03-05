@@ -68,11 +68,26 @@ function displayMusicGIFS () {
                 var randomNum = randomArray[i];
                 var imgTag = $("<img>");
                 imgTag.attr("src", results[randomNum].images.fixed_height_still.url);
+                imgTag.attr("data-still", results[randomNum].images.fixed_height_still.url)
+                imgTag.attr("data-animate", results[randomNum].images.fixed_height.url)
+                imgTag.attr("state", "still");
+                imgTag.attr("class", "gif");
                 $("#gif-container").append(imgTag);
             }
         })
 
 }
+
+$(document).on("click", ".gif", function() {
+    if ($(this).attr("state") === "still") {
+        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("state", "animate");
+    }
+    else {
+        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("state", "still");
+    }
+})
 
 $(document).on("click", ".music-btn", function() {
     $this = $(this);
