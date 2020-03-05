@@ -22,17 +22,34 @@ h1, h2, h3   {
 
 .container-fluid {
     z-index: 100;
-    height: 500px;
+    max-height: 500px;
+    min-height: 400px;
     background-image: url("../images/banner2.png");
     width: 100%;
     background-size: cover;
     position: fixed;
-    /* background-size: 100%; */
     background-repeat: no-repeat;
+    background-color: #000000;
+    opacity: 90%;
+    top: 25%;
+    color: white;
+}
+
+.container-fluid button {
     background-color: #ffffff;
-    opacity: 97%;
-    top: 20%;
-    /* right: 50px; */
+    color: #D79922;
+}
+
+#bannerText {
+    position: absolute;
+    top: 25%;
+    right: 50%;
+}
+
+.container-fluid h1 {
+    font-family: 'Bebas Neue', cursive;
+    color: white;
+    font-size: 4em;
 }
 
 h4 {

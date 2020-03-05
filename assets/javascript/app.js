@@ -7,6 +7,9 @@ var favoriteMusicians = [];
 var favoriteGifs = [];
 $("#addMoreGifs, #addTopicFavorites, #clearButton").hide();
 
+$(document).on("click", "#continue", function () {
+    $(".container-fluid").hide();
+})
 
 function addButton () {
     for (var i = 0; i < musicTopics.length; i++) {
