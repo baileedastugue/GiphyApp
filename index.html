@@ -38,11 +38,26 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 border" id="main-container">
-                <button id="addMoreGifs" class="btn btn-danger">Add<br>more<br>gifs!</button>
-                <span id="gif-container"></span>
+            <div class="col-lg-9 border container">
+                <div class="row">
+                    <div class="col-2">
+                        <div class="container">
+                            <div class="row buttonRow ">
+                                <button id="addMoreGifs" class="btn btn-danger rotate">Add<br>more<br>gifs!</button>
+                                <br><button id="addTopicFavorites" class="btn btn-warning rotate">Favorite</button>
+                                <br><button id="addTopicFavorites" class="btn btn-success rotate">Clear</button>
+                            </div>
+                            <!-- <div class="row buttonRow"> -->
+                                <!-- <button id="addTopicFavorites" class="btn btn-warning rotate">Favorite<br>this<br>musician</button> -->
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                    <div class="col-10" id="main-container">
+                        <span id="gif-container"></span>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-4 border" id="addingButtons-container">
+            <div class="col-lg-3 border" id="addingButtons-container">
                 <form class="form-inline">
                     <div class="form-group mx-sm-3 mb-2">
                         <input type="text" class="form-control" id="music-input" placeholder="More topics">

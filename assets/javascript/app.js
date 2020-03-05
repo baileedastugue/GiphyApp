@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 var musicTopics = ["St. Vincent", "Billy Joel", "The Strokes", "Talking Heads"]
 var $this;
-$("#addMoreGifs").hide();
+$("#addMoreGifs, #addTopicFavorites").hide();
 
 function addButton () {
     for (var i = 0; i < musicTopics.length; i++) {
@@ -76,9 +76,9 @@ function displayMusicGIFS () {
                 imgTag.attr("state", "still");
 
                 var cardTag = $("<div class='card'>").append(imgTag);
-                cardTag = cardTag.append($("<div class='card-body'><p class='card-text'>Hello</p></div>"))
+                cardTag = cardTag.append($("<div class='card-body'><p class='card-text'> GIF Rating: " + results[randomNum].rating + "<br>Title: " + results[randomNum].title + "</p></div>"))
                 $("#gif-container").prepend(cardTag);
-                // console.log(cardTag);
+                console.log(response);
             }
         })
 
@@ -97,7 +97,7 @@ $(document).on("click", ".gif", function() {
 
 $(document).on("click", ".music-btn", function() {
     $this = $(this);
-    $("#addMoreGifs").show(); 
+    $("#addMoreGifs, #addTopicFavorites").show(); 
     $("#gif-container").empty();
     displayMusicGIFS()
 })
