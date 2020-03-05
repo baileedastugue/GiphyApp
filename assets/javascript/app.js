@@ -1,7 +1,8 @@
-$( document ).ready(function() {
+$(document).ready(function() {
 
 var musicTopics = ["St. Vincent", "Billy Joel", "The Strokes", "Talking Heads"]
 var $this;
+$("#addMoreGifs").hide();
 
 function addButton () {
     for (var i = 0; i < musicTopics.length; i++) {
@@ -72,7 +73,7 @@ function displayMusicGIFS () {
                 imgTag.attr("data-animate", results[randomNum].images.fixed_height.url)
                 imgTag.attr("state", "still");
                 imgTag.attr("class", "gif");
-                $("#gif-container").append(imgTag);
+                $("#gif-container").prepend(imgTag);
             }
         })
 
@@ -91,7 +92,12 @@ $(document).on("click", ".gif", function() {
 
 $(document).on("click", ".music-btn", function() {
     $this = $(this);
+    $("#addMoreGifs").show(); 
     $("#gif-container").empty();
+    displayMusicGIFS()
+})
+
+$(document).on("click", "#addMoreGifs", function() {
     displayMusicGIFS()
 })
 

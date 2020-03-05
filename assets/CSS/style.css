@@ -9,9 +9,14 @@
     margin-top: 10px;
 }
 
-#gif-container {
+#main-container {
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
+    height: 200px;
+    /* display: inline; */
+}
+
+button#addMoreGifs {
     height: 200px;
 }
