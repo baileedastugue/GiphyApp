@@ -109,13 +109,19 @@ $(document).on("click", "#clearButton", function() {
 })
 
 $(document).on("click", "#addTopicFavorites", function() {
-   favoriteMusicians.push(musicInfo);
-   favoriteMusiciansStr = favoriteMusicians.join(", ");
-   $("#favorites-container").empty();
-   $("#favorites-container").append(favoriteMusiciansStr);
-   addFavoriteMusician();
+    updateFaveArray();
+    addFavoriteMusician();
 
 })
+
+function updateFaveArray () {
+    if (!favoriteMusicians.includes(musicInfo)) {
+        favoriteMusicians.push(musicInfo);
+    }
+    favoriteMusiciansStr = favoriteMusicians.join(", ");
+    $("#favorites-container").empty();
+    $("#favorites-container").append(favoriteMusiciansStr);
+}
 
 function addFavoriteMusician () {
     // musicInfo = $this.attr("data-name");
@@ -133,7 +139,9 @@ function addFavoriteMusician () {
             var randomSticker = Math.floor(Math.random() * 25)
             imgTag.attr("src", results[randomSticker].images.fixed_height.url);
             // var favImages = [];
-            $("#favorites-container").append(imgTag);
+            // $("#favorites-container").prepend(imgTag);
+            favoriteGifs.push(imgTag);
+            $("#favorites-container").prepend(favoriteGifs);
         })
     }
 
