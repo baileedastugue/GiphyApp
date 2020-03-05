@@ -2,7 +2,10 @@ $(document).ready(function() {
 
 var musicTopics = ["St. Vincent", "Billy Joel", "The Strokes", "Talking Heads"]
 var $this;
-$("#addMoreGifs, #addTopicFavorites").hide();
+var musicInfo;
+var favoriteMusicians = [];
+var favoriteGifs = [];
+$("#addMoreGifs, #addTopicFavorites, #clearButton").hide();
 
 function addButton () {
     for (var i = 0; i < musicTopics.length; i++) {
@@ -44,7 +47,7 @@ function shuffle(array) {
   }
 
 function displayMusicGIFS () {
-    var musicInfo = $this.attr("data-name");
+    musicInfo = $this.attr("data-name");
     var randomOffset = Math.floor(Math.random() * 100)
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=music&q=" +
         musicInfo + "&offset=" + randomOffset + "&api_key=jbVjecxyl97zlwipqSEjHVb4NqK2PG5d";
@@ -56,14 +59,10 @@ function displayMusicGIFS () {
         .then(function(response) {
             var results = response.data;
             var randomArray = [];
-            // var resultsReturned = response;
-            // var totalReturned = (response.pagination.total_count); 
-
             for (var i = 0; i < 10; i++) {
                 randomArray.push(i);
             }
             randomArray = shuffle(randomArray);
-            // randomArray = randomArray.splice(0, 10);
 
             for (var i = 0; i < randomArray.length; i++){
                 var randomNum = randomArray[i];
@@ -78,7 +77,6 @@ function displayMusicGIFS () {
                 var cardTag = $("<div class='card'>").append(imgTag);
                 cardTag = cardTag.append($("<div class='card-body'><p class='card-text'> GIF Rating: " + results[randomNum].rating + "<br>Title: " + results[randomNum].title + "</p></div>"))
                 $("#gif-container").prepend(cardTag);
-                console.log(response);
             }
         })
 
@@ -97,7 +95,7 @@ $(document).on("click", ".gif", function() {
 
 $(document).on("click", ".music-btn", function() {
     $this = $(this);
-    $("#addMoreGifs, #addTopicFavorites").show(); 
+    $("#addMoreGifs, #addTopicFavorites, #clearButton").show(); 
     $("#gif-container").empty();
     displayMusicGIFS()
 })
@@ -105,5 +103,38 @@ $(document).on("click", ".music-btn", function() {
 $(document).on("click", "#addMoreGifs", function() {
     displayMusicGIFS()
 })
+
+$(document).on("click", "#clearButton", function() {
+    $("#gif-container").empty();
+})
+
+$(document).on("click", "#addTopicFavorites", function() {
+   favoriteMusicians.push(musicInfo);
+   favoriteMusiciansStr = favoriteMusicians.join(", ");
+   $("#favorites-container").empty();
+   $("#favorites-container").append(favoriteMusiciansStr);
+   addFavoriteMusician();
+
+})
+
+function addFavoriteMusician () {
+    // musicInfo = $this.attr("data-name");
+    // var randomOffset = Math.floor(Math.random() * 100)
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=music&q=" +
+        musicInfo + "&api_key=jbVjecxyl97zlwipqSEjHVb4NqK2PG5d";
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+        })
+        .then(function(response) {
+            var results = response.data;
+            var imgTag = $("<img>");
+            var randomSticker = Math.floor(Math.random() * 25)
+            imgTag.attr("src", results[randomSticker].images.fixed_height.url);
+            // var favImages = [];
+            $("#favorites-container").append(imgTag);
+        })
+    }
 
 });
