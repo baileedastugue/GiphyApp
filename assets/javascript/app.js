@@ -7,10 +7,11 @@ var favoriteMusicians = [];
 var favoriteGifs = [];
 $("#addMoreGifs, #addTopicFavorites, #clearButton").hide();
 
+
 function addButton () {
     for (var i = 0; i < musicTopics.length; i++) {
         var newButton = $("<button>");
-        newButton.attr("class", "btn btn-primary music-btn");
+        newButton.attr("class", "btn music-btn");
         newButton.attr("data-name", musicTopics[i]);
         newButton.text(musicTopics[i]);
         $("#musicButtons-container").append(newButton);
@@ -75,7 +76,8 @@ function displayMusicGIFS () {
                 imgTag.attr("state", "still");
 
                 var cardTag = $("<div class='card'>").append(imgTag);
-                cardTag = cardTag.append($("<div class='card-body'><p class='card-text'> GIF Rating: " + results[randomNum].rating + "<br>Title: " + results[randomNum].title + "</p></div>"))
+                cardTag = cardTag.append($("<div class='card-body'><p class='card-text'> GIF Rating: " + results[randomNum].rating + "</p></div>"))
+                // + "<br>Title: " + results[randomNum].title + 
                 $("#gif-container").prepend(cardTag);
             }
         })
@@ -138,8 +140,6 @@ function addFavoriteMusician () {
             var imgTag = $("<img>");
             var randomSticker = Math.floor(Math.random() * 25)
             imgTag.attr("src", results[randomSticker].images.fixed_height.url);
-            // var favImages = [];
-            // $("#favorites-container").prepend(imgTag);
             favoriteGifs.push(imgTag);
             $("#favorites-container").prepend(favoriteGifs);
         })

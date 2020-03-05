@@ -9,13 +9,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Bebas+Neue|Jacques+Francois+Shadow&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/CSS/base.css">
     <link rel="stylesheet" type="text/css" href="assets/CSS/style.css">
+    <!-- <link rel="stylesheet" href="assets/CSS/stylesheet.css" type="text/css" charset="utf-8" /> -->
     <title>Giphy App</title>
 </head>
-<body>
+<body class="d-flex flex-column h-100 border-top-0" id="wrapper">
     <nav class="navbar">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a href="index.html"><h1>Musically GIF-ted</h1></a>
         <div class="btn-group">
             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Menu
@@ -26,57 +28,55 @@
             </div>
         </div>
     </nav>
-
+    <div class="container-fluid">
+        BANNER
+        <button class="btn" id="continue">CONTINUE</button>
+    </div>
     <div class="container">
         <div class="row">
-            <!-- <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="https://i.ytimg.com/vi/MPV2METPeJU/maxresdefault.jpg" alt="Card image cap">
-            </div> -->
+            <!-- <p>some sample text</p> -->
                 <div id="musicButtons-container" class="col-12 border">
             </div>
         </div>
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-lg-9 border container">
+            <div class="col-lg-9 container">
                 <div class="row">
                     <div class="col-2">
                         <div class="container">
                             <div class="row buttonRow ">
-                                <button id="addMoreGifs" class="btn btn-danger rotate">Add<br>more<br>gifs!</button>
-                                <br><button id="addTopicFavorites" class="btn btn-warning rotate">Favorite</button>
-                                <br><button id="clearButton" class="btn btn-success rotate">Clear</button>
+                                <button id="addMoreGifs" class="btn">Add<br>more<br>gifs!</button>
+                                <br><button id="addTopicFavorites" class="btn">Favorite</button>
+                                <br><button id="clearButton" class="btn">Clear</button>
                             </div>
-                            <!-- <div class="row buttonRow"> -->
-                                <!-- <button id="addTopicFavorites" class="btn btn-warning rotate">Favorite<br>this<br>musician</button> -->
-                            <!-- </div> -->
                         </div>
                     </div>
                     <div class="col-10" id="main-container">
-                        <span id="gif-container"></span>
+                        <span id="gif-container"><h4>Get GIF'd</h4></span>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 border" id="addingButtons-container">
+            <div class="col-lg-3" id="addingButtons-container">
                 <form class="form-inline">
                     <div class="form-group mx-sm-3 mb-2">
                         <input type="text" class="form-control" id="music-input" placeholder="More topics">
                     </div><br>
-                    <button type="submit" class="btn btn-primary mb-2" id="add-music">+</button>
+                    <button type="submit" class="btn mb-2" id="add-music">+</button>
                 </form>
 
                 <form class="form-inline">
                     <div class="form-group mx-sm-3 mb-2">
                       <input type="text" class="form-control" id="addFavorite" placeholder="Add favorites">
                     </div><br>
-                    <button type="submit" class="btn btn-primary mb-2">+</button>
+                    <button type="submit" class="btn mb-2">+</button>
                   </form>
             </div>
         </div>
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-12 border" id="favorites-container">
+            <div class="col-12 border" id="omdb-container">
             </div>
         </div>
     </div>
