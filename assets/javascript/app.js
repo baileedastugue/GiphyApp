@@ -11,6 +11,8 @@ $(document).on("click", "#continue", function () {
     $(".container-fluid").hide();
 })
 
+// $("#test-container").text(musicTopics[1]);
+
 function addButton () {
     for (var i = 0; i < musicTopics.length; i++) {
         var newButton = $("<button>");
@@ -49,6 +51,23 @@ function shuffle(array) {
   
     return array;
   }
+
+function topTracks () {
+    var token = "BQBdVDXLszjwEO3L6TU0muUEMQfDCQ1PKL3U6WrO2c5OpxCB2ECWdPbXXm4755mUra_fONIpXtm8cSoKsCz2m0sZbt_ktyPHpSX6sunovAxE6B--v8pSKFSVd99W5pmzB1_vZj9WkBhlfpZTXQ";
+    var queryURL = 'https://api.spotify.com/v1/search?type=artist&query=' + favoriteMusicians[favoriteMusicians.length-1];
+    
+    $.ajax({
+        url: queryURL,
+        headers: {
+          Authorization: 'Bearer ' + token
+        }
+      })
+      .then( function(response) {
+        var recentFave = response.artists.items[0];
+        $("#favorites-container").append(recentFave.genres[0]);
+      })  
+
+}
 
 function displayMusicGIFS () {
     musicInfo = $this.attr("data-name");
@@ -116,6 +135,7 @@ $(document).on("click", "#clearButton", function() {
 $(document).on("click", "#addTopicFavorites", function() {
     updateFaveArray();
     addFavoriteMusician();
+    topTracks();
 
 })
 

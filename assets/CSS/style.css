@@ -41,6 +41,11 @@ h1, h2, h3   {
 }
 
 #bannerText {
+    padding-left: 50%;
+    width: 90%;
+}
+
+#bannerText {
     position: absolute;
     top: 25%;
     right: 50%;
