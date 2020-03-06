@@ -7,10 +7,10 @@
     height: 100%;   
     background-color: #E6E5E0;
     background-attachment: fixed;
-    background-position-x: -300px;
-    background-position-y: 200px;
-    background-image: url("../images/circle.png");
-    background-repeat: no-repeat;
+    background-position-x: -50%, 100%;
+    background-position-y: 20%, 100%;
+    background-image: url("../images/circle.png"), url("../images/volume.png");
+    background-repeat: no-repeat, repeat-x;
 }
 
 h1, h2, h3   {
@@ -47,7 +47,7 @@ h1, h2, h3   {
 
 #bannerText {
     position: absolute;
-    top: 25%;
+    top: 15%;
     right: 50%;
 }
 
@@ -125,4 +125,8 @@ button, p, form, a {
 
 .music-btn:hover {
     color: #ffffff;
+}
+
+.navbar {
+    background-color: white;
 }

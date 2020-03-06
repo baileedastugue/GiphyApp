@@ -5,10 +5,11 @@ var $this;
 var musicInfo;
 var favoriteMusicians = [];
 var favoriteGifs = [];
-$("#addMoreGifs, #addTopicFavorites, #clearButton").hide();
+$("#addMoreGifs, #addTopicFavorites, #clearButton, #gif-container, #musicButtons-container, #addingButtons-container").hide();
 
 $(document).on("click", "#continue", function () {
     $(".container-fluid").hide();
+    $("#gif-container, #musicButtons-container, #addingButtons-container").show();
 })
 
 // $("#test-container").text(musicTopics[1]);
