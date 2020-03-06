@@ -4,15 +4,12 @@ var musicTopics = ["St. Vincent", "Billy Joel", "The Strokes", "Talking Heads"]
 var $this;
 var musicInfo;
 var favoriteMusicians = [];
-var favoriteGifs = [];
-$("#addMoreGifs, #addTopicFavorites, #clearButton, #gif-container, #musicButtons-container, #addingButtons-container").hide();
+$("#addMoreGifs, #addTopicFavorites, #clearButton, #gif-container, #musicButtons-container, #addingButtons-container, #favorites-html").hide();
 
 $(document).on("click", "#continue", function () {
     $(".container-fluid").hide();
-    $("#gif-container, #musicButtons-container, #addingButtons-container").show();
+    $("#gif-container, #musicButtons-container, #addingButtons-container, #favorites-html").show();
 })
-
-// $("#test-container").text(musicTopics[1]);
 
 function addButton () {
     for (var i = 0; i < musicTopics.length; i++) {
@@ -54,13 +51,14 @@ function shuffle(array) {
   }
 
 function topTracks () {
-    var token = "BQBdVDXLszjwEO3L6TU0muUEMQfDCQ1PKL3U6WrO2c5OpxCB2ECWdPbXXm4755mUra_fONIpXtm8cSoKsCz2m0sZbt_ktyPHpSX6sunovAxE6B--v8pSKFSVd99W5pmzB1_vZj9WkBhlfpZTXQ";
+    var token = "BQAPkEXZyFIzRsv9O7DJacaWsaIMlNwL5seSK5Qonzbki6CYco3acR_KwAff1UKDOB5g8ZrgccO2Pki0JeyCLKu0b8CxgjYj2UMK_0di5z20Uj85AdxAf02vg_lwr5dYcGZT1KgJe0Ye8Wt_RQ";
     var queryURL = 'https://api.spotify.com/v1/search?type=artist&query=' + favoriteMusicians[favoriteMusicians.length-1];
     
     $.ajax({
+        method: "GET",
         url: queryURL,
         headers: {
-          Authorization: 'Bearer ' + token
+          Authorization: 'Bearer ' + token,
         }
       })
       .then( function(response) {
@@ -107,6 +105,17 @@ function displayMusicGIFS () {
 
 }
 
+// ON-CLICK FUNCTIONS:
+
+// displays gifs and shows gif-related buttons when an artist button is clicked
+$(document).on("click", ".music-btn", function() {
+    $this = $(this);
+    $("#addMoreGifs, #addTopicFavorites, #clearButton").show(); 
+    $("#gif-container").empty();
+    displayMusicGIFS()
+})
+
+// alternates gifs between still and animated states
 $(document).on("click", ".gif", function() {
     if ($(this).attr("state") === "still") {
         $(this).attr("src", $(this).attr("data-animate"));
@@ -118,55 +127,74 @@ $(document).on("click", ".gif", function() {
     }
 })
 
-$(document).on("click", ".music-btn", function() {
-    $this = $(this);
-    $("#addMoreGifs, #addTopicFavorites, #clearButton").show(); 
-    $("#gif-container").empty();
-    displayMusicGIFS()
-})
-
+// gif-related button that adds more gifs to the page
 $(document).on("click", "#addMoreGifs", function() {
     displayMusicGIFS()
 })
 
+// gif-related button that clears gifs from page
 $(document).on("click", "#clearButton", function() {
     $("#gif-container").empty();
 })
 
+// updates saved favorites
 $(document).on("click", "#addTopicFavorites", function() {
     updateFaveArray();
-    addFavoriteMusician();
-    topTracks();
 
+    // gets updated favorites list from local storage
+    favoriteMusicians = JSON.parse(localStorage.getItem("faveList"));
+    favoriteMusiciansStr = favoriteMusicians.join(", ");
+
+    // displays saved favorites and most-recent favorite on page
+    $(".saved-container").empty().append(favoriteMusiciansStr);
+    $("#recentFavorite").empty().append(favoriteMusicians[favoriteMusicians.length-1])
 })
 
 function updateFaveArray () {
     if (!favoriteMusicians.includes(musicInfo)) {
         favoriteMusicians.push(musicInfo);
     }
-    favoriteMusiciansStr = favoriteMusicians.join(", ");
-    $("#favorites-container").empty();
-    $("#favorites-container").append(favoriteMusiciansStr);
+    localStorage.setItem("faveList", JSON.stringify(favoriteMusicians));
 }
 
-function addFavoriteMusician () {
-    // musicInfo = $this.attr("data-name");
-    // var randomOffset = Math.floor(Math.random() * 100)
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=music&q=" +
-        musicInfo + "&api_key=jbVjecxyl97zlwipqSEjHVb4NqK2PG5d";
+//  gif-related button that adds more gifs to the page
+$(document).on("click", "#clearFaves", function() {
+    localStorage.clear();
+    favoriteMusicians = [];
+    $(".saved-container, #recentFavorite").empty();
+})
 
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-        })
-        .then(function(response) {
-            var results = response.data;
-            var imgTag = $("<img>");
-            var randomSticker = Math.floor(Math.random() * 25)
-            imgTag.attr("src", results[randomSticker].images.fixed_height.url);
-            favoriteGifs.push(imgTag);
-            $("#favorites-container").prepend(favoriteGifs);
-        })
+savedFavorites();
+
+function savedFavorites () {
+    if (localStorage.getItem("faveList") === null) {
+        console.log("Local storage empty");
     }
+    else {
+        favoriteMusicians = JSON.parse(localStorage.getItem("faveList"));
+        favoriteMusiciansStr = favoriteMusicians.join(", ");
+        $(".saved-container").append(favoriteMusiciansStr);
+    }
+}
+
+// function addFavoriteMusician () {
+//     // musicInfo = $this.attr("data-name");
+//     // var randomOffset = Math.floor(Math.random() * 100)
+//     var queryURL = "https://api.giphy.com/v1/gifs/search?q=music&q=" +
+//         musicInfo + "&api_key=jbVjecxyl97zlwipqSEjHVb4NqK2PG5d";
+
+//     $.ajax({
+//         url: queryURL,
+//         method: "GET"
+//         })
+//         .then(function(response) {
+//             var results = response.data;
+//             // var imgTag = $("<img>");
+//             // var randomSticker = Math.floor(Math.random() * 25)
+//             // imgTag.attr("src", results[randomSticker].images.fixed_height.url);
+//             // favoriteGifs.push(imgTag);
+//             // $("#favorites-container").prepend(favoriteGifs);
+//         })
+//     }
 
 });

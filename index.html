@@ -41,29 +41,7 @@
     </div>
     <div class="container">
         <div class="row">
-            <!-- <p>some sample text</p> -->
-                <div id="musicButtons-container" class="col-12">
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-9 container">
-                <div class="row">
-                    <div class="col-2">
-                        <div class="container">
-                            <div class="row buttonRow ">
-                                <button id="addMoreGifs" class="btn">Add<br>more<br>gifs!</button>
-                                <br><button id="addTopicFavorites" class="btn">Favorite</button>
-                                <br><button id="clearButton" class="btn">Clear</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-10" id="main-container">
-                        <span id="gif-container"><h4>Get GIF'd</h4></span>
-                    </div>
-                </div>
-            </div>
+            <div id="musicButtons-container" class="col-lg-9"></div>
             <div class="col-lg-3" id="addingButtons-container">
                 <h6>Add artists</h6>
                 <form class="form-inline">
@@ -84,8 +62,39 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-12" id="favorites-container">
+            <div class="col-12 container">
+                <div class="row">
+                    <div class="col-2">
+                        <div class="container">
+                            <div class="row buttonRow ">
+                                <button id="addMoreGifs" class="btn">Add<br>more<br>gifs!</button>
+                                <br><button id="addTopicFavorites" class="btn">Favorite</button>
+                                <br><button id="clearButton" class="btn">Clear</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-10" id="main-container">
+                        <span id="gif-container"><h4>Get GIF'd</h4></span>
+                    </div>
+                </div>
             </div>
+        </div>
+    </div>
+    <div class="container" id="favorites-html">
+        <div class="row">
+            <div class="col-12">
+                <h5>Your Saved Favorites: </h5>
+                <span class="saved-container"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h5>Most-Recent Favorite: </h5>
+                <span id="recentFavorite"></span>
+            </div>
+        </div>
+        <div class="row">
+            <button class="btn" id="clearFaves">Clear all favorites</button><br>
         </div>
     </div>
 </body>
