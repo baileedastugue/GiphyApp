@@ -8,7 +8,7 @@
     background-color: #E6E5E0;
     background-attachment: fixed;
     background-position-x: -50%, 100%;
-    background-position-y: 20%, 100%;
+    background-position-y: -900%, 100%;
     background-image: url("../images/circle.png"), url("../images/volume.png");
     background-repeat: no-repeat, repeat-x;
 }
@@ -22,16 +22,17 @@ h1, h2, h3   {
 
 .container-fluid {
     z-index: 100;
-    max-height: 500px;
-    min-height: 400px;
+    /* max-height: 500px; */
+    min-height: 500px;
     background-image: url("../images/banner2.png");
     width: 100%;
     background-size: cover;
-    position: fixed;
+    position: relative;
+    background-position: center;
     background-repeat: no-repeat;
     background-color: #000000;
-    opacity: 90%;
-    top: 25%;
+    opacity: 95%;
+    top: 5%;
     color: white;
 }
 
